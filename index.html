@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html ng-app="spa">
+	<head>
+		<title>Github Pages SPA</title>
+
+		<base href="/">
+	</head>
+	<body ng-class="page">
+		<div class="wrapper">
+			<nav>
+				<a href="/" class="teaser">home</a>
+				<a href="/page1">page1</a>
+				<a href="/page2">page2</a>
+				<a href="/error">error</a>
+			</nav>
+			<h1>Github Pages SPA</h1>
+		    <section ng-view></section>
+
+			<footer>View the repo</footer>
+
+		</div>
+	</body>
+
+	<script type="text/ng-template" id="home.html">
+		<p>You are home</p>
+	</script>
+
+	<script type="text/ng-template" id="page1.html">
+		<p>You are one page 1</p>
+	</script>
+
+	<script type="text/ng-template" id="page2.html">
+		<p>You are one page 2</p>
+	</script>
+
+	<script type="text/ng-template" id="error.html">
+		<p>This is any other page</p>
+	</script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.1/angular.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-rc.1/angular-route.js"></script>
+	<script>
+
+		angular.module('spa', ['ngRoute'])
+			.config(function($routeProvider, $locationProvider){
+				$routeProvider
+					.when('/', {
+						templateUrl: 'home.html'
+					})
+					.when('/page1', {
+						templateUrl: 'page1.html'
+					})
+					.when('/page2', {
+						templateUrl: 'page2.html'
+					})
+					.otherwise({
+						templateUrl: 'error.html'
+					});
+
+				$locationProvider.html5Mode(true);
+			})
+
+			.run(function($rootScope, $location, $route) {
+
+			});
+
+	</script>
+
+</html>
