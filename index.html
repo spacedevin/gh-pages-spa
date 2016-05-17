@@ -40,11 +40,11 @@
 		<p>You are home</p>
 	</script>
 
-	<script type="text/ng-template" id="page-200.html">
-		<p>This page has a symlink to 200.html and a 200 http code</p>
+	<script type="text/ng-template" id="tpl-200.html">
+		<p>This page has a symlink and a 200 http code</p>
 	</script>
 
-	<script type="text/ng-template" id="page-404.html">
+	<script type="text/ng-template" id="tpl-404.html">
 		<p>This page does not have a symlink and has a 404 http code</p>
 	</script>
 
@@ -63,10 +63,10 @@
 						templateUrl: 'home.html'
 					})
 					.when('/page-200', {
-						templateUrl: 'page-200.html'
+						templateUrl: 'tpl-200.html'
 					})
 					.when('/page-404', {
-						templateUrl: 'page-404.html'
+						templateUrl: 'tpl-404.html'
 					})
 					.otherwise({
 						templateUrl: 'error.html'
