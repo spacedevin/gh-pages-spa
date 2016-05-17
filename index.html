@@ -2,35 +2,50 @@
 <html ng-app="spa">
 	<head>
 		<title>Github Pages SPA</title>
-
-		<base href="/">
+		<base href="/gh-pages-spa/">
+		<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/lumen/bootstrap.min.css" rel="stylesheet" integrity="sha384-mvYjhBJXQ9VlNETV/xXShy849GsBHnKzVVudnMOcWUVM/6Nd2ksj8VNng5f8ylyX" crossorigin="anonymous">
+		<style>
+			.navbar .navbar-nav {
+				display: inline-block;
+				float: none;
+			}
+			.navbar {
+				text-align: center;
+			}
+		</style>
 	</head>
-	<body ng-class="page">
-		<div class="wrapper">
-			<nav>
-				<a href="/" class="teaser">home</a>
-				<a href="/page1">page1</a>
-				<a href="/page2">page2</a>
-				<a href="/error">error</a>
-			</nav>
-			<h1>Github Pages SPA</h1>
-		    <section ng-view></section>
+	<body>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<ul class="nav navbar-nav">
+					<li><a href="/" class="teaser">index</a></li>
+					<li><a href="/page-200">200</a></li>
+					<li><a href="/page-404">404</a></li>
+				</ul>
+			</div>
+		</nav>
 
-			<footer>View the repo</footer>
+		<center>
+			<h2>Github Pages SPA Example</h2>
+			<section ng-view></section>
+		</center>
 
-		</div>
+		<footer>
+			<center><br><a href="https://github.com/arzynik/gh-pages-spa">https://github.com/arzynik/gh-pages-spa</a></center>
+		</footer>
+
 	</body>
 
 	<script type="text/ng-template" id="home.html">
 		<p>You are home</p>
 	</script>
 
-	<script type="text/ng-template" id="page1.html">
-		<p>You are one page 1</p>
+	<script type="text/ng-template" id="page-200.html">
+		<p>This page has a symlink to 200.html and a 200 http code</p>
 	</script>
 
-	<script type="text/ng-template" id="page2.html">
-		<p>You are one page 2</p>
+	<script type="text/ng-template" id="page-404.html">
+		<p>This page does not have a symlink and has a 404 http code</p>
 	</script>
 
 	<script type="text/ng-template" id="error.html">
@@ -47,11 +62,11 @@
 					.when('/', {
 						templateUrl: 'home.html'
 					})
-					.when('/page1', {
-						templateUrl: 'page1.html'
+					.when('/page-200', {
+						templateUrl: 'page-200.html'
 					})
-					.when('/page2', {
-						templateUrl: 'page2.html'
+					.when('/page-404', {
+						templateUrl: 'page-404.html'
 					})
 					.otherwise({
 						templateUrl: 'error.html'
